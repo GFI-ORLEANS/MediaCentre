@@ -395,6 +395,10 @@
           <excludes>
             <exclude>src/main/webapp/rs/**</exclude>
             <exclude>src/test/resources/json/**</exclude>
+            <exclude>src/main/webapp/css/styles.css</exclude>
+            <exclude>src/main/webapp/js/responsive-bootstrap-toolkit.min.js</exclude>
+            <exclude>src/main/webapp/js/jquery.dotdotdot.min.js</exclude>
+            <exclude>src/main/webapp/js/plugin.js</exclude>
           </excludes>
         </configuration>
         <executions>

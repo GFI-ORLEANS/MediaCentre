@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright © 2017 GIP-RECIA (https://www.recia.fr/)
+		Copyright © 2017 GIP-RECIA (https://www.recia.fr/)
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
+		Licensed under the Apache License, Version 2.0 (the "License");
+		you may not use this file except in compliance with the License.
+		You may obtain a copy of the License at
 
-        http://www.apache.org/licenses/LICENSE-2.0
+				http://www.apache.org/licenses/LICENSE-2.0
 
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+		Unless required by applicable law or agreed to in writing, software
+		distributed under the License is distributed on an "AS IS" BASIS,
+		WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+		See the License for the specific language governing permissions and
+		limitations under the License.
 
 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -22,9 +22,9 @@
 			 xmlns:util="http://www.springframework.org/schema/util"
 			 xmlns:cache="http://www.springframework.org/schema/cache"
 			 xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-  http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
-  http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+	http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
 
 	<!-- This is the root Spring WebApplicationContext. Place in this context 
 		the service, dao, and utility-level beans the web tier will access. NOTE: 
@@ -34,7 +34,13 @@
 
 	<bean
 			class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="classpath:configuration.properties" />
+		<property name="locations">
+			<util:list>
+				<value>classpath:configuration.properties</value>
+				<value>classpath:configuration-adds.properties</value>
+			</util:list>
+		</property>
+		<property name="ignoreUnresolvablePlaceholders" value="true"/>
 	</bean>
 
 	<context:component-scan base-package="org.esco.portlet.mediacentre.service" />
@@ -44,24 +50,25 @@
 	<context:component-scan base-package="org.esco.portlet.mediacentre.dao" />
 
 
-<!-- 	<bean id="userResource" class="org.esco.portlet.mediacentre.dao.impl.UserResourceImpl"> -->
+	<bean id="userResource" class="org.esco.portlet.mediacentre.dao.impl.UserResourceImpl">
 		<!--<property name="currentEtabCodeInfoKey" value="${userInfo.key.currentEtabId}" />-->
 <!-- 		<property name="mockedUserResource" ref="userResourceMock"/> -->
-<!-- 	</bean> -->
+	</bean>
+
+	<!--<bean id="userResource" class="org.esco.portlet.mediacentre.dao.impl.MockUserResourceImpl">-->
+	<!-- 		<property name="uidInfoKey" value="${userInfo.key.uid}"></property> -->
+	<!-- 		<property name="etabCodesInfoKey" value="${userInfo.key.etabIds}"></property> -->
+	<!-- 		<property name="currentEtabCodeInfoKey" value="${userInfo.key.currentEtabId}"></property> -->
+	<!-- 		<property name="profilsInfoKey" value="${userInfo.key.profils}"></property> -->
+	<!-- 		<property name="userGroupsInfokey" value="${userInfo.key.groups}"></property> -->
+	<!--</bean>-->
+	<!-- 	<bean id="mediaCentreResourceMock" class="org.esco.portlet.mediacentre.dao.impl.MockHelpInfoResourceImpl" /> -->
+
 	<!--<bean id="mediaCentreResource" class="org.esco.portlet.mediacentre.dao.impl.MediaCentreResourceGsonImpl" />-->
 	<bean id="mediaCentreResource" class="org.esco.portlet.mediacentre.dao.impl.MediaCentreResourceJacksonImpl" />
 
-	<bean id="userResource" class="org.esco.portlet.mediacentre.dao.impl.MockUserResourceImpl">
-<!-- 		<property name="uidInfoKey" value="${userInfo.key.uid}"></property> -->
-<!-- 		<property name="etabCodesInfoKey" value="${userInfo.key.etabIds}"></property> -->
-<!-- 		<property name="currentEtabCodeInfoKey" value="${userInfo.key.currentEtabId}"></property> -->
-<!-- 		<property name="profilsInfoKey" value="${userInfo.key.profils}"></property> -->
-<!-- 		<property name="userGroupsInfokey" value="${userInfo.key.groups}"></property> -->
-	</bean>
-<!-- 	<bean id="mediaCentreResourceMock" class="org.esco.portlet.mediacentre.dao.impl.MockHelpInfoResourceImpl" /> -->
-
-	<bean id="preferenceResource" class="org.esco.portlet.mediacentre.dao.impl.MockPreferenceResourceImpl" />
-<!-- 	<bean id="preferenceResource" class="org.esco.portlet.mediacentre.dao.impl.PreferenceResourceImpl" /> -->
+	<!--<bean id="preferenceResource" class="org.esco.portlet.mediacentre.dao.impl.MockPreferenceResourceImpl" />-->
+	<bean id="preferenceResource" class="org.esco.portlet.mediacentre.dao.impl.PreferenceResourceImpl" />
 
 
 	<bean id="jsonHttpMessageConverter"
@@ -90,7 +97,7 @@
 			<bean class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory"
 						p:readTimeout="15000"
 						p:connectTimeout="5000"
-					  p:connectionRequestTimeout="5000">
+						p:connectionRequestTimeout="5000">
 				<property name="httpClient" ref="httpClient" />
 			</bean>
 		</constructor-arg>
