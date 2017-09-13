@@ -128,7 +128,7 @@
 	            <div class="container-fluid">
 	            
 	            	<c:if test="${empty ressources}" >
-	               		<spring:message code="resource.error.empty" />
+						<span class="res-empty"><spring:message code="resource.error.empty" /></span>
 	               	</c:if>
 	            	
 	               	<c:forEach var="ressource" items="${ressources}" >

@@ -86,6 +86,18 @@ $(function() {
     $('.fab-affectations').on('click', openModalAffect);
     $('.modal .mdi-close, .overlay, .modal-footer .btn-primary').on('click', closeModalAffect);
 
+    /* onDocumentReady + onResize ? */
+// Set .modal-body pseudo-elements positionning
+
+    var $modalHeaderHeight = $('.modal-header').outerHeight();
+    var $modalFooterHeight = $('.modal-footer').outerHeight();
+
+//modal-body:before
+    $('.modal-body:before').css('top',$modalHeaderHeight);
+
+//modal-body:before
+    $('.modal-body:after').css('bottom',$modalFooterHeight);
+
     var isMobile = {
         Android: function() {
             return navigator.userAgent.match(/Android/i);
