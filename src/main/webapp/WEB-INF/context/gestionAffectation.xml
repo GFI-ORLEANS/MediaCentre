@@ -32,16 +32,16 @@
 			<property name="id" value="GAR"/>
 			<property name="nom" value="site.affectation.nom.GAR"/>
 			<property name="description" value="site.affectation.description.GAR"/>
-			<property name="lien" value="site.affectation.lien.GAR"/>
-			<property name="population" value="isMemberOf"/>
-			<property name="regexpPopulation" value="((esco)|(clg37)):Admin:mediacentre:GAR:RESPONSABLE_AFFECTATION:.+"/>
+			<property name="lien" value="${gestionaffectation.gar.lien}"/>
+			<property name="population" value="${gestionaffectation.gar.filter.attribut}"/>
+			<property name="regexpPopulation" value="${gestionaffectation.gar.filter.regexp}"/>
 		</bean>
 		
 		<bean class="org.esco.portlet.mediacentre.model.affectation.GestionAffectation">
 			<property name="id" value="ASR"/>
 			<property name="nom" value="site.affectation.nom.ASR"/>
 			<property name="description" value="site.affectation.description.ASR"/>
-			<property name="lien" value="site.affectation.lien.ASR"/>
+			<property name="lien" value="https://google.com"/>
 			<property name="population" value="isMemberOf"/>
 			<property name="regexpPopulation" value="((esco)|(clg37)):Admin:mediacentre:GAR:RESPONSABLE_AFFECTATION:.+"/>
 		</bean>
