@@ -1,6 +1,6 @@
 <%--
 
-    Copyright © 2017 GIP-RECIA (https://www.recia.fr/)
+    Copyright Â© 2017 GIP-RECIA (https://www.recia.fr/)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
     limitations under the License.
 
 --%>
-
 <jsp:directive.include file="/WEB-INF/jsp/include.jsp" />
 <rs:aggregatedResources path="skin.xml" />
 
