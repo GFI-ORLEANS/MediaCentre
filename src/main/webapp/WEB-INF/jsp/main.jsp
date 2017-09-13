@@ -165,7 +165,7 @@
 		                            
 		                        </div>
 		                        <c:choose>
-			                        <c:when test="${ressource.urlVignette!=''}">
+			                        <c:when test="${(not empty ressource.urlVignette) and (ressource.urlVignette!='')}">
 				                        <div class="res-img img-placeholder" style="background: url(${ressource.urlVignette}) no-repeat 50%;background-size:cover;">
 				                            <i class="mdi ${ressource.urlVignette=='' ? 'mdi-file-outline' : ''}"></i>
 				                        </div>
